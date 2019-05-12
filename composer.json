@@ -1,0 +1,10 @@
+{
+    "name": "neelamgahlyan/mvc-php",
+    "authors": [
+        {
+            "name": "Neelam Gahlyan",
+            "email": "neelamgahlyan@appster.in"
+        }
+    ],
+    "require": {}
+}
