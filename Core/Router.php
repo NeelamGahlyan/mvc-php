@@ -16,7 +16,7 @@ class Router{
      * return void
      */
     public function add($route, $params){        
-        $this->routes[$route] = $params;        
+        $this->routes[$route] = $params;            
     }
     
     /**
