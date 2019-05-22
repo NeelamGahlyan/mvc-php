@@ -1,19 +1,43 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Front controller
+ * PHP 7
  */
 
-require '../Core/Router.php';
+require '../vendor/autoload.php';
+/**
+ * Autoloader
+ * Now its commnted because we are using composer autoloader
+ */
+//spl_autoload_register(function ($class){
+//       $root = dirname(__DIR__); //Get parent dir
+//       $file = $root . '/' . str_replace('\\', '/', $class) . '.php';
+//       if(is_readable($file)){
+//           require $root. '/' . str_replace('\\', '/', $class) . '.php';
+//       }
+//});
 
-$router = new Router();
+$router = new Core\Router();
 
 $router->add('', ['controller' => 'Home', 'action' => 'index']);
-$router->add('posts', ['controller' => 'Posts', 'action' => 'index']);
-$router->add('posts/new', ['controller' => 'Posts', 'action' => 'new']);
+//$router->add('posts/new', ['controller' => 'Posts', 'action' => 'new']);
+$router->add('{controller}/{action}');
+$router->add('admin/{controller}/{action}', ['namespace' => 'Admin']);
+$router->add('{controller}/{id:\d+}/{action}');
+$url = $_SERVER['QUERY_STRING'];
 
-echo '<pre>';
-var_dump($router->getRoutes());
-echo "</pre>";
+//if($router->match($url)){
+//    echo "<pre>";
+//    var_dump($router->getParams());
+//    echo "</pre>";
+//} else{
+//    echo "No route found";
+//}
+
+//echo "</pre>";
+//echo htmlspecialchars(print_r($router->getRoutes(),true));
+//echo "</pre>";
+
+
+$router->dispatch($url);

@@ -3,8 +3,16 @@
     "authors": [
         {
             "name": "Neelam Gahlyan",
-            "email": "neelamgahlyan@appster.in"
+            "email": "neelam.gahlyan@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "twig/twig": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core/",
+            "App\\": "App/"
+        }
+    }
 }
