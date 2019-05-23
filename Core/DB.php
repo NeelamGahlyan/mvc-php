@@ -26,13 +26,10 @@ abstract class DB{
             $username = Config::DB_USER;
             $password = Config::DB_PASSWORD;
             
-            try {
                 $DB = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-                              
-            } catch (\PDOException $ex) {
-                echo $ex->getMessage();
-
-            }
+                
+                $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                
             return $DB;
 
         }
